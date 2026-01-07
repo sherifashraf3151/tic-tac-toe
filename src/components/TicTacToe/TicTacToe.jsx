@@ -27,6 +27,9 @@ export const TicTacToe = () => {
     if (lock) {
       return 0;
     }
+    if (data[num] !== "") {
+      return;
+    }
     if ( count % 2 === 0 ) {
       e.target.innerHTML = `<img src='${cross_icon}'>`;
       data[num]= "x" ;
@@ -64,9 +67,6 @@ export const TicTacToe = () => {
     else if ( data[0] === data[4] && data[4] === data[8] && data[8] !== "" ) {
       won( data[8] )
     }
-    else if ( data[0] === data[1] && data[1] === data[2] && data[2] !== "" ) {
-      won( data[2] )
-    }
     else if ( data[2] === data[4] && data[4] === data[6] && data[6] !== "" ) {
       won( data[6] )
     }
@@ -78,10 +78,10 @@ export const TicTacToe = () => {
     setLock(true);
 
     if ( winner === "x" ) {
-      titleRef.current.innerHTML = `Congratulations : <img src=${cross_icon} > `
+      titleRef.current.innerHTML = `Congratulations : <img src="${cross_icon}">`
     }
     else {
-      titleRef.current.innerHTML = `Congratulations : <img src=${circle_icon} > `
+      titleRef.current.innerHTML = `Congratulations : <img src="${circle_icon}">`
     }
   }
 
